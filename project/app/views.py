@@ -16,4 +16,19 @@ class Product_view(View):
     def get(self, request):
         context = self.get_context_data()
         return render(request, 'Home.html', context)
+    
+    
+class Login_view(View):
+    template_name = 'Login.html'
+    
+    def get(self, request):
+        return render(request, self.template_name)
+    
+    
+class Signup_view(View):
+    template_name = 'signup.html'
+    
+    def get(self, request):
+        return render(request, self.template_name)
+        
 
