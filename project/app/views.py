@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views import View
 from .models import Product
+from .forms import UserRegistration
 
 # Create your views here.
 
@@ -29,6 +30,19 @@ class Signup_view(View):
     template_name = 'signup.html'
     
     def get(self, request):
-        return render(request, self.template_name)
+        form = UserRegistration()
+        context = {'form': form}
+        return render(request, self.template_name, context)
+    
+    def post(self, request):
+        if request.method == 'POST':
+            form = UserRegistration(request.POST)
+            if form.is_valid():
+                user = form.save()
+                user.save()
+                return redirect(request, 'login')
+            
+        context = {'form':form}
+        return render(request, self.template_name, context)
         
 

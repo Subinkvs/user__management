@@ -22,35 +22,44 @@
       
                     <h2 class="fw-bold mb-2 text-uppercase">Sign up</h2>
                     <p class="text-white-50 mb-5">Please enter your login and password!</p>
-                    <div class="form-outline form-white mb-4">
-                        <input type="email" id="typeEmailX" class="form-control form-control-lg" />
-                        <label class="form-label" for="typeEmailX">Username</label>
-                      </div>
-      
-                    <div class="form-outline form-white mb-4">
-                      <input type="email" id="typeEmailX" class="form-control form-control-lg" />
-                      <label class="form-label" for="typeEmailX">Email</label>
-                    </div>
-      
-                    <div class="form-outline form-white mb-4">
-                      <input type="password" id="typePasswordX" class="form-control form-control-lg" />
-                      <label class="form-label" for="typePasswordX">Password</label>
-                    </div>
-                    <div class="form-outline form-white mb-4">
-                        <input type="password" id="typePasswordX" class="form-control form-control-lg" />
-                        <label class="form-label" for="typePasswordX">Confirm Password</label>
-                      </div>
-      
+
+                    <form action="" method="post">
+                      {% csrf_token %}
+                        <div class="form-outline form-white mb-4">
+                          <label class="form-label" for="typeEmailX">Username</label>
+                          {{form.username}}
+                          {% if form.errors.username %}
+                          <label class="text-danger">{{form.errors.username}}</label>
+                          {% endif %}
+                        </div>  
+                        <div class="form-outline form-white mb-4">
+                          <label class="form-label" for="typeEmailX">Email</label>
+                          {{form.email}}
+                          {% if form.errors.email %}
+                          <label class="text-danger">{{form.errors.email}}</label>
+                          {% endif %}
+
+                        </div>
+                        <div class="form-outline form-white mb-4">
+                          <label class="form-label" for="typePasswordX">Password</label>
+                          {{form.password1}}
+                          {% if form.error.password1 %}
+                          <label class="text-danger">{{form.errors.password1}}</label>
+                          {% endif %}
+                        </div>
+                        <div class="form-outline form-white mb-4">
+                            <label class="form-label" for="typePasswordX">Confirm Password</label>
+                            {{form.password2}}
+                            {% if form.error.password2 %}
+                            <label class="text-danger">{{form.errors.password2}}</label>
+                            {% endif %}
+                          </div>
+                   
+                
                     <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="#!">Forgot password?</a></p>
       
                     <button class="btn btn-outline-light btn-lg px-5" type="submit">Signup</button>
-<!--       
-                    <div class="d-flex justify-content-center text-center mt-4 pt-1">
-                      <a href="#!" class="text-white"><i class="fab fa-facebook-f fa-lg"></i></a>
-                      <a href="#!" class="text-white"><i class="fab fa-twitter fa-lg mx-4 px-2"></i></a>
-                      <a href="#!" class="text-white"><i class="fab fa-google fa-lg"></i></a>
-                    </div>
-       -->
+                  </form>
                   </div>
       
                   <div>
