@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.views import View
 from .models import Product
 from .forms import UserRegistration
+from django.contrib.auth.models import User
 
 # Create your views here.
 
